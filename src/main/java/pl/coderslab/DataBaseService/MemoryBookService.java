@@ -2,6 +2,7 @@ package pl.coderslab.DataBaseService;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.coderslab.model.Author;
 import pl.coderslab.model.AuthorImpl;
@@ -16,12 +17,15 @@ import java.util.Optional;
 public class MemoryBookService implements BookService {
     private List<BookImpl> books;
     private static Long nextId = 6L;
-    private MemoryAuthorService memoryAuthorService;
-//    private  List<AuthorImpl> authors = memoryAuthorService.getAuthors();
+    private AuthorService authorService;
+    private  List<AuthorImpl> authorsList;
 
-    public MemoryBookService(){
+    @Autowired
+    public MemoryBookService(AuthorService authorService){
         books = new ArrayList<>();
-        AuthorImpl author = new AuthorImpl(7L,"kupa","sraka");
+        this.authorService = authorService;
+        this.authorsList = authorService.getAuthors();
+        AuthorImpl author = new AuthorImpl(7L,"tttttt","ssssss");
         books.add(new BookImpl(1L,"9788324631766","Thinking in Java",author,"Helion","programming"));
         books.add(new BookImpl(2L,"9788324631766","Thinking in Java",author,"Helion","programming"));
         books.add(new BookImpl(3L,"9788324631766","Thinking in Java",author,"Helion","programming"));

@@ -2,6 +2,7 @@ package pl.coderslab.DataBaseService;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.coderslab.model.AuthorImpl;
 import pl.coderslab.model.BookImpl;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 @Data
 @AllArgsConstructor
 public class MemoryAuthorService implements AuthorService{

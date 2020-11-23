@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface BookService {
 
-    @Autowired
+
     List<BookImpl> getBooks();
 
     Optional<BookImpl> getBookById(long id);

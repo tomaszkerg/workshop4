@@ -21,14 +21,6 @@ public class BookController {
         this.bookService = bookService;
     }
 
-
-    @RequestMapping("/helloBook")
-    public BookImpl helloBook() {
-//        List<AuthorImpl> authors = authorService.getAuthors();
-        AuthorImpl author = new AuthorImpl(7L,"kupa","sraka");
-        return new BookImpl(1L, "9788324631766", "Thinking in Java",
-                author, "Helion", "programming");
-    }
     @GetMapping("")
     public List<BookImpl> getList() {
         return bookService.getBooks();
@@ -52,5 +44,10 @@ public class BookController {
     @PutMapping("")
     public void editBook(@RequestBody BookImpl book){
         bookService.editBook(book);
+    }
+
+    @GetMapping("/home")
+    public String home(){
+        return "home";
     }
 }
